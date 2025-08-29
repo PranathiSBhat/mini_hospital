@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Book Appointment</title>
+</head>
+<body>
+    <h1>Book an Appointment</h1>
+
+    {% if message %}
+        <p><strong>{{ message }}</strong></p>
+    {% endif %}
+
+    <form action="/book" method="post">
+        <label for="doctor">Select Doctor:</label>
+        <select name="doctor_id" id="doctor" required>
+            {% for doctor in doctors %}
+                <option value="{{ doctor[0] }}">{{ doctor[1] }} - {{ doctor[2] }}</option>
+            {% endfor %}
+        </select><br><br>
+
+        <label>Patient Name:</label>
+        <input type="text" name="name" required><br><br>
+
+        <label>Phone Number:</label>
+        <input type="text" name="phone" required><br><br>
+
+        <label>Appointment Date:</label>
+        <input type="date" name="date" required><br><br>
+
+        <label>Appointment Time:</label>
+        <input type="time" name="time" required><br><br>
+
+        <button type="submit">Book Appointment</button>
+    </form>
+</body>
+</html>
